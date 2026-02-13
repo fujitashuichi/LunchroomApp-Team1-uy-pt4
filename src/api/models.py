@@ -24,11 +24,11 @@ class User(db.Model):
         self.is_active = True
         self.num_funcionario = num_funcionario
         self.is_admin = is_admin
-        
+
 
     def serialize(self):
         return {
-           "id":self.id,
+            "id":self.id,
             "name":self.name,
             "last_name":self.last_name,
             "email":self.email,
@@ -36,7 +36,7 @@ class User(db.Model):
             "num_funcionario":self.num_funcionario,
             "is_admin":self.is_admin,
             "reserva":[res.id for res in self.reserva] if self.reserva else []
-            
+
         }
 
     # menus = db.relationship('Menu', backref='user', lazy=True)
@@ -49,11 +49,11 @@ class Menu(db.Model):
     description = db.Column(db.String(255), nullable=True)
     img = db.Column(db.String(1000), nullable=False)
     price = db.Column(db.Float, nullable=False)
-    
+
 
     def __repr__(self):
         return f'<Menu {self.name}>'
-     
+
     def __init__(self, day,name,description, img, price):
         self.day = day
         self.name= name
@@ -81,7 +81,7 @@ class MenuOptions(db.Model):
 
     def __repr__(self):
         return f'<MenuOptions {self.name}>'
-     
+
     def __init__(self,name, img, price):
         self.name=name
         self.img = img
@@ -107,14 +107,14 @@ class Reserva(db.Model):
     jueves = db.Column(db.String(20), nullable=True)
     viernes = db.Column(db.String(20), nullable=True)
     sabado = db.Column(db.String(20), nullable=True)
-    
+
     def __repr__(self):
         return f'<Reserva {self.user_id}>'
 
     def serialize(self):
         return {
             "id": self.id,
-            "user":self.user_id,          
+            "user":self.user_id,
             "user_id": self.user_id,
             "lunes":self.lunes,
             "martes":self.martes,
@@ -123,7 +123,7 @@ class Reserva(db.Model):
             "viernes":self.viernes,
             "sabado":self.sabado,
         }
-            
+
 # ListaDeOrdenes
 
 from datetime import datetime

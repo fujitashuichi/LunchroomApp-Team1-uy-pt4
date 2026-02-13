@@ -13,6 +13,7 @@ services:
       envVars:
           - key: BASENAME # Imported from Heroku app
             value: /
+
           - key: FLASK_APP # Imported from Heroku app
             value: src/app.py
           - key: FLASK_DEBUG # Imported from Heroku app
